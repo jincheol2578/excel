@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <form onsubmit="return false;">
+        <div>
+            <input id="title" type="text" placeholder="제목">
+        </div>
+        <div>
+            <textarea id="content" placeholder="내용"></textarea>
+        </div>
+        <div>
+            <input id="writer" placeholder="작성자" type="text">
+        </div>
+        <div>
+            <input type="button" id="reg-board" onclick="regBoard()">
+        </div>
+        <div>
+            <input type="button" value="excel 다운로드" id="excel-down">
+        </div>
+    </form>
+
+    <div >
+        <table id="data-list">
+            <tr>
+                <th>번호</th>
+                <th>작성자</th>
+                <th>제목</th>
+                <th>내용</th>
+                <th>날짜</th>
+            </tr>
+        </table>
+    </div>
+</body>
+<script src="/js/download.js" ></script>
+</html>

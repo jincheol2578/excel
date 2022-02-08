@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.excel.board.mapper.BoardMapper">
+    <select id="selBoard" resultType="BoardDTO">
+        SELECT * FROM t_board
+    </select>
+
+    <select id="selTableInfo" resultType="ExcelDTO">
+        SELECT COLUMN_NAME AS 'column', DATA_TYPE AS 'type', COLUMN_KEY AS 'key'
+        FROM INFORMATION_SCHEMA.COLUMNS
+        WHERE TABLE_SCHEMA='excel' AND TABLE_NAME=#{table};
+    </select>
+
+    <insert id="insBoard">
+        INSERT INTO t_board
+        (title, ctnt, writer)
+        VALUES
+        (#{title}, #{ctnt}, #{writer})
+    </insert>
+</mapper>
