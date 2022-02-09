@@ -8,10 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,6 +30,13 @@ public class BoardController {
         Map<String, Object> map = new HashMap<>();
         map.put("msg", "good");
         service.excelDownload(request, response);
+        return new ResponseEntity(map, HttpStatus.OK);
+    }
+
+    @PostMapping("excel/upload")
+    public ResponseEntity excelUpload(@RequestParam MultipartFile uploadfile) {
+        Map<String, List<BoardDTO>> map = new HashMap<>();
+        map.put("data", service.excelUpload(uploadfile));
         return new ResponseEntity(map, HttpStatus.OK);
     }
 
